@@ -14,6 +14,23 @@ TOP_EDGE = 400
 GRAVITY = .1
 DAMPING = .8
 FRICTION = .02
+spacevar=2
+
+def spacebar():
+    global spacevar
+    if spacevar//2==0:
+        RIGHT_EDGE=200
+        LEFT_EDGE=-200
+        BOTTOM_EDGE=-200
+        TOP_EDGE=200
+    if spacevar//2!=0:
+        RIGHT_EDGE= 400
+        LEFT_EDGE = -400
+        BOTTOM_EDGE = -400
+        TOP_EDGE = 400
+    spacevar=spacevar+1
+    
+turtle.onkey(spacebar,"space")
 
 def randomcolor(): #making this a function to be repeatable
     colornumber=random.randint(0,2)
@@ -102,5 +119,6 @@ screen.tracer(0) #turn off auto screen updates to make it faster
 
 
 while True:
+    turtle.listen()
     moveBall()
     screen.update()
