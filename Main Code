@@ -1,6 +1,7 @@
 #first change after syncing to local mac repo and commiting within visual code studio - just this comment
 #second change made after loading into V
-#import needed libraries   
+#import needed libraries
+import random
 import turtle
 from turtle import *
 
@@ -13,6 +14,13 @@ TOP_EDGE = 400
 GRAVITY = .1
 DAMPING = .8
 FRICTION = .02
+
+def randomcolor(): #making this a function to be repeatable
+    colornumber=random.randint(0,2)
+    return(colornumber)
+
+topbottomcolorlist=["blue","red","yellow"] #making lists to randomly select from
+leftrightcolorlist=["white","chocolate","skyblue"]
 
 #This function will update the location of the ball
 def moveBall():
@@ -38,16 +46,22 @@ def moveBall():
 
     #Check for collisons and reverse the direction if so
     if (x >= RIGHT_EDGE):
+        colornumber=randomcolor() #generates a random number as a function to get a new color each time
+        ball.color(leftrightcolorlist[colornumber]) #changes the ball to that color
         xVel *= -1
         if xVel!=0:
             ball.setx(x + xVel-5)
 
     if (x <= LEFT_EDGE):
+        colornumber=randomcolor()
+        ball.color(leftrightcolorlist[colornumber])
         xVel *= -1
         if xVel!=0:
             ball.setx(x + xVel+5)
    
     if (y <= BOTTOM_EDGE+5):
+        colornumber=randomcolor()
+        ball.color(topbottomcolorlist[colornumber])
         yVel *= -1
         yVel = yVel * DAMPING #damping effect
         if yVel>2:
@@ -56,6 +70,8 @@ def moveBall():
             yVel=0
 
     if (y >= TOP_EDGE):
+        colornumber=randomcolor()
+        ball.color(topbottomcolorlist[colornumber])
         yVel *= -1
         ball.sety(y + yVel-5)
 
