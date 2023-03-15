@@ -50,7 +50,8 @@ def moveBall():
         
     y = ball.ycor()
     if yVel!=0: #if it's 0 we are not bouncing, we are rolling
-        yVel = yVel - GRAVITY   #only y is impacted by gravity
+        yVel = yVel + GRAVITY   #only y is impacted by gravity
+        #reversed to make gravity pull upwards
         ball.sety(y + yVel)
     else:   # friction comes into play while rolling which impacts xVel
         if (xVel>0):  xVel = xVel-FRICTION
@@ -110,8 +111,8 @@ ball.speed(0)
 ball.setheading(40)
 
 #Define initial position and speed of the ball
-ball.setx(100)
-ball.sety(200)
+ball.setx(0)
+ball.sety(0)
 xVel = 5
 yVel = 3
 
